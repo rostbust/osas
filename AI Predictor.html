@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Game Predictor</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .console-box {
+        font-family: monospace;
+        background-color: #1a1a1a;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 20px #00ff88;
+        color: #00ff88;
+        height: 250px;
+        overflow-y: auto;
+      }
+      .loading-screen {
+        font-family: monospace;
+        background: #000;
+        color: #00ff88;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        flex-direction: column;
+        z-index: 50;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+      .hidden-screen {
+        display: none;
+      }
+      .disabled-btn {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .game-btn {
+        transition: all 0.3s ease;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-900 text-white font-sans">
+    <div id="loading" class="loading-screen">
+      <p>Loading... Please wait while we set up your experience.</p>
+    </div>
+
+    <div id="mainContent" class="hidden-screen">
+      <header class="w-full bg-gray-800 p-4 flex justify-between items-center">
+        <h1 class="text-xl font-bold text-green-400">
+          1xBet AI Predictor
+        </h1>
+        <nav class="space-x-4">
+          <a href="#how" class="hover:text-green-400">How It Works</a>
+          <a href="#games" class="hover:text-green-400">Games</a>
+          <a href="#start" class="hover:text-green-400">Get Started</a>
+        </nav>
+      </header>
+
+      <section
+        class="min-h-screen flex flex-col items-center justify-center px-4 text-center"
+      >
+        <h2 class="text-3xl md:text-5xl font-bold mb-6">
+          AI Game Predictions
+        </h2>
+        <p class="max-w-xl mb-8 text-gray-300">
+          Join thousands using our smart AI to win in popular
+          games. 96% signal accuracy, real-time predictions, and fast cashouts!
+        </p>
+
+        <button
+          id="startButton"
+          class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-xl text-lg transition"
+        >
+          Start Earning Now
+        </button>
+
+        <!-- Input Section -->
+        <div id="idInputSection" class="hidden mt-6 max-w-sm w-full">
+          <input
+            id="betIdInput"
+            type="text"
+            inputmode="numeric"
+            pattern="\d*"
+            placeholder="Your 1xBet ID"
+            class="w-full p-3 rounded-lg border border-gray-600 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-green-400"
+          />
+          <button
+            id="submitIdBtn"
+            class="mt-4 w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg"
+          >
+            Submit ID
+          </button>
+          <p id="inputError" class="hidden mt-2 text-red-500 text-sm">
+            Please enter a valid numeric 1xBet ID (at least 6 digits).
+          </p>
+        </div>
+
+        <!-- Game Buttons Section (hidden initially) -->
+        <div id="gameButtonsSection" class="hidden mt-8 w-full max-w-md">
+          <h3 class="text-xl font-semibold mb-4">Select Your Game</h3>
+          <div class="grid grid-cols-1 gap-4">
+            <a
+              href="https://predictorai.github.io/Aviator/"
+              class="game-btn bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg"
+            >
+              Aviator Predictions
+            </a>
+            <a
+              href="https://predictorai.github.io/Mines/"
+              class="game-btn bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-lg"
+            >
+              Mines Predictions
+            </a>
+            <a
+              href="https://predictorai.github.io/Penalty/"
+              class="game-btn bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-lg"
+            >
+              Penalty Predictions
+            </a>
+            <a
+              href="https://predictorai.github.io/ChikenRoad/"
+              class="game-btn bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg"
+            >
+              Chicken Road Predictions
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="how" class="py-16 bg-gray-800 px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold mb-8 text-center">How It Works</h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-gray-700 p-6 rounded-lg">
+              <h3 class="text-xl font-semibold mb-3 text-green-400">
+                1. Enter Your ID
+              </h3>
+              <p>Provide your 1xBet account ID to get started.</p>
+            </div>
+            <div class="bg-gray-700 p-6 rounded-lg">
+              <h3 class="text-xl font-semibold mb-3 text-green-400">
+                2. Select Game
+              </h3>
+              <p>
+                Choose from our supported prediction games.
+              </p>
+            </div>
+            <div class="bg-gray-700 p-6 rounded-lg">
+              <h3 class="text-xl font-semibold mb-3 text-green-400">
+                3. Get Predictions
+              </h3>
+              <p>Receive AI-powered predictions with 96% accuracy rate.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="text-center text-gray-500 text-sm py-6">
+        © 2025 AI Predictor. Not affiliated with 1xBet. Use
+        responsibly.
+      </footer>
+    </div>
+
+    <script>
+      // Loading screen logic
+      setTimeout(() => {
+        document.getElementById("loading").classList.add("hidden-screen");
+        document
+          .getElementById("mainContent")
+          .classList.remove("hidden-screen");
+      }, 3000);
+
+      // Elements
+      const startButton = document.getElementById("startButton");
+      const idInputSection = document.getElementById("idInputSection");
+      const submitIdBtn = document.getElementById("submitIdBtn");
+      const betIdInput = document.getElementById("betIdInput");
+      const inputError = document.getElementById("inputError");
+      const gameButtonsSection = document.getElementById("gameButtonsSection");
+
+      // Show input field on button click
+      startButton.addEventListener("click", () => {
+        startButton.classList.add("hidden");
+        idInputSection.classList.remove("hidden");
+      });
+
+      // Submit ID logic
+      submitIdBtn.addEventListener("click", () => {
+        const value = betIdInput.value.trim();
+        const isValid = /^\d{6,}$/.test(value); // at least 6 digits
+
+        if (!isValid) {
+          inputError.classList.remove("hidden");
+        } else {
+          inputError.classList.add("hidden");
+          idInputSection.classList.add("hidden");
+          gameButtonsSection.classList.remove("hidden");
+        }
+      });
+    </script>
+  </body>
+</html>
